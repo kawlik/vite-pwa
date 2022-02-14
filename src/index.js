@@ -62,10 +62,7 @@ const updateSW = registerSW({
 
     //  listen for 'beforeinstallprompt' event
     window.addEventListener( 'beforeinstallprompt', ( event ) => {
-
-        //  prevent default prompt
-        event.preventDefault();
-
+        
         //  set ref to event
         install_function = event;
 
