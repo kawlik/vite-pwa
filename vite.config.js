@@ -27,6 +27,7 @@ export default defineConfig({
                 theme_color: '#646cff',
                 background_color: '#f5f5f5',
                 display: 'standalone',
+                description: 'Install the PWA application almost in the same way as the native application. How cool isn\'t it?',
                 icons: [
                     {
                         src: 'android-chrome-192x192.png',
@@ -43,6 +44,18 @@ export default defineConfig({
                         sizes: '512x512',
                         type: 'image/png',
                         purpose: 'any maskable',
+                    },
+                ],
+                screenshots: [
+                    {
+                        src: 'screenshot_01.jpg',
+                        sizes: '405x878',
+                        type: 'image/jpg',
+                    },
+                    {
+                        src: 'screenshot_02.jpg',
+                        sizes: '405x878',
+                        type: 'image/jpg',
                     },
                 ],
             },

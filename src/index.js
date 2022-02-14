@@ -1,10 +1,21 @@
+//  PWA register
+import { registerSW } from 'virtual:pwa-register'
+
 //  style sheet
 import './style/index.css';
+
+
+//  register PWA
+const updateSW = registerSW({
+    onOfflineReady() { },
+    onNeedRefresh() { },
+});
 
 
 /*  PWA installation
 /*   *   *   *   *   *   *   *   *   *   */
 ( async function install() {
+
 
     //  install function ref
     let install_function;
@@ -19,11 +30,26 @@ import './style/index.css';
     /*  create utiliry functions
     /*   *   *   *   *   *   *   *   */
 
+    const setInstallButtonVisibility = ( isInstalled ) => {
+        if( isInstalled ) {
+            console.log( 'PWA app was installed!' );
+            install_button.disabled = true;
+            install_button.hidden = true;
+            install_function = null;
+        } else {
+            console.warn( 'PWA app was not installed!' );
+        }
+    };
+
     const enableButton = () => {
         install_button.disabled = false;
-        install_button.addEventListener( 'click', ( event ) => {
+        install_button.addEventListener( 'click', async ( event ) => {
             event.preventDefault();
             install_function.prompt();
+
+            //  await for response
+            const { outcome } = await install_function.userChoice;
+            setInstallButtonVisibility( outcome === 'accepted' );
         });
     };
 
