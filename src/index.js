@@ -44,7 +44,7 @@ const updateSW = registerSW({
 
     const enableButton = () => {
         install_button.disabled = false;
-        install_button.hidden = true;
+        install_button.hidden = false;
         install_button.addEventListener( 'click', async ( event ) => {
             event.preventDefault();
             install_function.prompt();
@@ -62,7 +62,7 @@ const updateSW = registerSW({
 
     //  listen for 'beforeinstallprompt' event
     window.addEventListener( 'beforeinstallprompt', ( event ) => {
-        
+
         //  set ref to event
         install_function = event;
 
