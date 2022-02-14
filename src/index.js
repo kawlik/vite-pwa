@@ -38,14 +38,17 @@ const updateSW = registerSW({
             install_function = null;
         } else {
             console.warn( 'PWA app was not installed!' );
+            install_button.disabled = false;
         }
     };
 
     const enableButton = () => {
         install_button.disabled = false;
+        install_button.hidden = true;
         install_button.addEventListener( 'click', async ( event ) => {
             event.preventDefault();
             install_function.prompt();
+            install_button.disabled = false;
 
             //  await for response
             const { outcome } = await install_function.userChoice;
